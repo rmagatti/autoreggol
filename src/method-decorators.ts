@@ -1,5 +1,4 @@
-import { Level } from "pino";
-import { MetadataKey } from "./base";
+import { Level, MetadataKey } from "./base";
 
 export function AutoLogBypass<T>(
   target: any,
