@@ -17,7 +17,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test",
     "clean": "rimraf build",
     "prepublishOnly": "rimraf build && tsc"
   },
