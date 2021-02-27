@@ -1,4 +1,4 @@
-# Auto Logger
+# Auto Reggol
 
 A collection of handy auto logging decorators.
 
