@@ -5,7 +5,7 @@
   "author": "Ronnie Magatti <ronniemagatti@gmail.com>",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "homepage": "https://github.com/rmagatti/autoreggol",
   "repository": {
     "type": "git",
