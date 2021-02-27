@@ -1,20 +1,19 @@
-# Neo Env
+# Auto Logger
 
-Functions for determining the current environment.
+A collection of handy auto logging decorators.
 
 ## Usage
 
 ### Installation
 
-1. `yarn add @neofinancial/neo-autologger`
-2. `import { isDevelopment } from '@neofinancial/neo-autologger';`
+1. `yarn add auto-logger`
 
 ## Development
 
 1. Clone this repo
 2. `yarn`
 3. `yarn link`
-4. In the package you want to test in run `yarn link @neofinancial/neo-autologger`
+4. In the package you want to test in run `yarn link auto-logger`
 5. Build package with `yarn build` or turn on watch mode with `yarn watch`
 
 ## Testing

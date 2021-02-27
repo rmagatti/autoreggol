@@ -1,15 +1,15 @@
 {
-  "name": "autologger",
+  "name": "auto-logger",
   "version": "0.1.0",
   "description": "A collection of handy auto logging decorators.",
   "author": "Ronnie Magatti <ronniemagatti@gmail.com>",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/rmagatti/autologger",
+  "homepage": "https://github.com/rmagatti/auto-logger",
   "repository": {
     "type": "git",
-    "url": "git@github.com:rmagatti/autologger.git"
+    "url": "git@github.com:rmagatti/auto-logger.git"
   },
   "engines": {
     "node": ">=10.0.0"
