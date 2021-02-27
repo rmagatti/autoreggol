@@ -1,0 +1,36 @@
+{
+  "name": "autologger",
+  "version": "0.1.0",
+  "description": "A collection of handy auto logging decorators.",
+  "author": "Ronnie Magatti <ronniemagatti@gmail.com>",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/rmagatti/autologger",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rmagatti/autologger.git"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "NODE_ENV=test jest",
+    "clean": "rimraf build",
+    "prepublishOnly": "rimraf build && tsc"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "/build/*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "reflect-metadata": "^0.1.13",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.2.2"
+  }
+}
