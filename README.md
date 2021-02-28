@@ -1,6 +1,6 @@
 # Auto Reggol
 
-A collection of handy auto logging decorators.
+A collection of handy decorators for auto logging class methods and properties based on es6 proxies and reflect-metadata.
 
 ## Usage
 Provide a `LogFunction` for auto reggol to call.
