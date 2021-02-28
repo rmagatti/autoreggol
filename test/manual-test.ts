@@ -1,7 +1,7 @@
 import { AutoLog } from "../src";
 import { LogFunction } from "../src/base";
 import { AutoLogLevel, AutoLogBypass } from "../src/method-decorators";
-import { AutoLogPropBypass } from "../src/propery-decorators";
+import { AutoLogPropBypass, AutoLogPropLevel } from "../src/propery-decorators";
 
 const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
   console.log(`${level}: ${ctr.name}.${targetKey.toString()}`, targetValue);
@@ -11,6 +11,7 @@ const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
 class Example {
   private a = "foo";
   private b = "bar";
+  @AutoLogPropLevel("warn")
   private c = "baz";
 
   private d = "qux";
