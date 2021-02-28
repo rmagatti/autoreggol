@@ -3,12 +3,12 @@ import { LogFunction } from "../src/base";
 import { AutoLogLevel, AutoLogBypass } from "../src/method-decorators";
 import { AutoLogPropBypass } from "../src/propery-decorators";
 
-const logger: LogFunction = (ctr, targetKey, targetValue, _level) => {
-  console.log(`${ctr.name}.${targetKey.toString()}`, targetValue);
+const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
+  console.log(`${level}: ${ctr.name}.${targetKey.toString()}`, targetValue);
 };
 
 @AutoLog({ logger, level: "debug", enablePropertyLoging: true })
-class ETransferContactProviderAdapter {
+class Example {
   private a = "foo";
   private b = "bar";
   private c = "baz";
@@ -19,7 +19,7 @@ class ETransferContactProviderAdapter {
   @AutoLogPropBypass
   private f = "corge";
 
-  @AutoLogLevel("debug")
+  @AutoLogLevel("info")
   private sanitize(str: string): string {
     this.d;
     this.e;
@@ -37,7 +37,7 @@ class ETransferContactProviderAdapter {
     return `A String ${str}`;
   }
 
-  createETransferContact(args: { a: string; b: string }): string {
+  run(args: { a: string; b: string }): string {
     this.a;
     this.b;
     this.c;
@@ -48,6 +48,6 @@ class ETransferContactProviderAdapter {
   }
 }
 
-const adapter = new ETransferContactProviderAdapter();
+const adapter = new Example();
 
-adapter.createETransferContact({ a: "Hello", b: "World" });
+adapter.run({ a: "Hello", b: "World" });
