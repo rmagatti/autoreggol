@@ -1,6 +1,10 @@
 import { AutoLog } from "../src";
 import { LogFunction } from "../src/base";
-import { AutoLogLevel, AutoLogBypass } from "../src/method-decorators";
+import {
+  AutoLogLevel,
+  AutoLogBypass,
+  AutoLogMe,
+} from "../src/method-decorators";
 import { AutoLogPropBypass, AutoLogPropLevel } from "../src/propery-decorators";
 
 const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
@@ -49,6 +53,22 @@ class Example {
   }
 }
 
-const adapter = new Example();
+const example = new Example();
 
-adapter.run({ a: "Hello", b: "World" });
+example.run({ a: "Hello", b: "World" });
+
+class NonLoggedClass {
+  iDontLog() {
+    return "not me";
+  }
+
+  @AutoLogMe(logger)
+  iDoLog(argument: string) {
+    return `me please ${argument}`;
+  }
+}
+
+const nonLoggedClass = new NonLoggedClass();
+
+nonLoggedClass.iDontLog();
+nonLoggedClass.iDoLog("arg1");

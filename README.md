@@ -69,9 +69,25 @@ class Example {
   }
 }
 
-const adapter = new Example();
+const example = new Example();
 
-adapter.run({ a: "Hello", b: "World" });
+example.run({ a: "Hello", b: "World" });
+
+class NonLoggedClass {
+  iDontLog() {
+    return "not me";
+  }
+
+  @AutoLogMe(logger)
+  iDoLog(argument: string) {
+    return `me please ${argument}`;
+  }
+}
+
+const nonLoggedClass = new NonLoggedClass();
+
+nonLoggedClass.iDontLog();
+nonLoggedClass.iDoLog("arg1");
 ```
 
 Result
@@ -85,4 +101,5 @@ debug: Example.e quuz
 info: Example.sanitize [ 'Hello' ]
 debug: Example.d qux
 debug: Example.e quuz
+info: NonLoggedClass.iDoLog [ 'arg1' ]
 ```

@@ -15,7 +15,7 @@ export interface AutoLogOptions {
 
 export type LogFunction = (
   ctr: ConstructorType,
-  targetKey: any,
+  targetKey: string | symbol,
   targetValue: any,
   level: Level
 ) => void;
