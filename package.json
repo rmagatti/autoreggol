@@ -1,6 +1,6 @@
 {
   "name": "autoreggol",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A collection of handy auto logging decorators.",
   "author": "Ronnie Magatti <ronniemagatti@gmail.com>",
   "main": "build/index.js",

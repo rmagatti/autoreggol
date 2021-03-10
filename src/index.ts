@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { MetadataKey, AutoLogOptions, ConstructorType, Level } from "./base";
 
-export function AutoLog({
+function AutoLog({
   logger,
   level = "info",
   enablePropertyLoging = false,
@@ -44,3 +44,9 @@ export function AutoLog({
     });
   };
 }
+
+export { AutoLog };
+
+export * from "./base";
+export * from "./method-decorators";
+export * from "./propery-decorators";
