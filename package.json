@@ -1,12 +1,24 @@
 {
   "name": "autoreggol",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A collection of handy auto logging decorators.",
   "author": "Ronnie Magatti <ronniemagatti@gmail.com>",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "MIT",
   "homepage": "https://github.com/rmagatti/autoreggol",
+  "keywords": [
+    "autolog",
+    "automatic",
+    "logging",
+    "autologging",
+    "es6",
+    "proxy",
+    "proxies",
+    "typescript",
+    "decorators",
+    "nodejs"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:rmagatti/autoreggol.git"
