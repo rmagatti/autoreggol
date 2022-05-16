@@ -1,6 +1,6 @@
 {
   "name": "autoreggol",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A collection of handy auto logging decorators.",
   "author": "Ronnie Magatti <ronniemagatti@gmail.com>",
   "main": "build/index.js",
@@ -39,9 +39,10 @@
   "files": [
     "/build/*"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  },
   "devDependencies": {
-    "reflect-metadata": "^0.1.13",
     "ts-node-dev": "^1.1.1",
     "typescript": "^4.2.2"
   }
