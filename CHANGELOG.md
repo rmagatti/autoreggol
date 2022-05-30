@@ -1,5 +1,9 @@
 # Auto Reggol Changelog
  
+## 0.1.5 (May 30, 2022)
+
+- Fixed filename spelling and associated referencing files
+
 ## 0.1.4 (May 16, 2022)
 
 - Make `reflect-metadata` a dependency instead of a devDependency.

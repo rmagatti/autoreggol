@@ -3,7 +3,9 @@
 A collection of handy decorators for auto logging class methods and properties based on es6 proxies and reflect-metadata.
 
 ## Usage
+
 Provide a `LogFunction` for auto reggol to call.
+
 ```typescript
 const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
   console.log(`${level}: ${ctr.name}.${targetKey.toString()}`, targetValue);
@@ -11,17 +13,22 @@ const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
 ```
 
 Pass the logger function into the `@AutoLog` decorator.
+
 ```typescript
 @AutoLog({ logger, level: "debug", enablePropertyLoging: true })
 class Example {}
 ```
 
 Full example
+
 ```typescript
 import { AutoLog } from "../src";
 import { LogFunction } from "../src/base";
 import { AutoLogLevel, AutoLogBypass } from "../src/method-decorators";
-import { AutoLogPropBypass, AutoLogPropLevel } from "../src/propery-decorators";
+import {
+  AutoLogPropBypass,
+  AutoLogPropLevel,
+} from "../src/property-decorators";
 
 const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
   console.log(`${level}: ${ctr.name}.${targetKey.toString()}`, targetValue);
@@ -91,6 +98,7 @@ nonLoggedClass.iDoLog("arg1");
 ```
 
 Result
+
 ```
 debug: Example.run [ { a: 'Hello', b: 'World' } ]
 debug: Example.a foo

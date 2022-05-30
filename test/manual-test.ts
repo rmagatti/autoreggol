@@ -5,7 +5,10 @@ import {
   AutoLogBypass,
   AutoLogMe,
 } from "../src/method-decorators";
-import { AutoLogPropBypass, AutoLogPropLevel } from "../src/propery-decorators";
+import {
+  AutoLogPropBypass,
+  AutoLogPropLevel,
+} from "../src/property-decorators";
 
 const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
   console.log(`${level}: ${ctr.name}.${targetKey.toString()}`, targetValue);
