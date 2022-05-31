@@ -49,4 +49,4 @@ export { AutoLog };
 
 export * from "./base";
 export * from "./method-decorators";
-export * from "./propery-decorators";
+export * from "./property-decorators";
