@@ -75,3 +75,15 @@ const nonLoggedClass = new NonLoggedClass();
 
 nonLoggedClass.iDontLog();
 nonLoggedClass.iDoLog("arg1");
+
+
+@AutoLog({ logger, level: "debug", enableLogging: false })
+class DisabledLoggedClass {
+  iDontLog() {
+    return "not me";
+  }
+}
+
+const disabledLoggedClass = new DisabledLoggedClass();
+
+disabledLoggedClass.iDontLog();

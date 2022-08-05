@@ -1,5 +1,9 @@
 # Auto Reggol Changelog
  
+## 0.2.0 (Aug 05, 2022)
+
+- Added the ability to control wheter the logging proxy gets applied through an `enableLogging` option that defaults to `true`
+
 ## 0.1.5 (May 30, 2022)
 
 - Fixed filename spelling and associated referencing files

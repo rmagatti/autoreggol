@@ -11,6 +11,7 @@ export interface AutoLogOptions {
   logger: LogFunction;
   level?: Level;
   enablePropertyLoging?: boolean;
+  enableLogging?: boolean;
 }
 
 export type LogFunction = (
