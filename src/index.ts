@@ -5,9 +5,10 @@ function AutoLog({
   logger,
   level = "info",
   enablePropertyLoging = false,
+  enableLogging = true,
 }: AutoLogOptions) {
   return function _autolog<T extends ConstructorType>(constructor: T) {
-    return new Proxy(constructor, {
+    const proxy = new Proxy(constructor, {
       construct(clz, args) {
         return new Proxy(Reflect.construct(clz, args), {
           get(target: any, propKey: any, receiver: any) {
@@ -42,6 +43,8 @@ function AutoLog({
         });
       },
     });
+
+    return enableLogging ? proxy : constructor;
   };
 }
 
