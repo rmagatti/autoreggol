@@ -8,12 +8,8 @@ function AutoLog({
   enableLogging = true,
 }: AutoLogOptions) {
   return function _autolog<T extends ConstructorType>(constructor: T) {
-    const shouldBypass = Reflect.getMetadata(
-      MetadataKey.BYPASS_LOGGING,
-      constructor
-    ) ?? false;
-
-    console.log('==== shouldBypass', shouldBypass);
+    const shouldBypass =
+      Reflect.getMetadata(MetadataKey.BYPASS_LOGGING, constructor) ?? false;
 
     if (!shouldBypass) {
       const proxy = new Proxy(constructor, {
