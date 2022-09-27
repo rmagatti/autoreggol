@@ -1,4 +1,4 @@
-import { AutoLog } from "../src";
+import { AutoLog, AutoLogBypassClass } from "../src";
 import { LogFunction } from "../src/base";
 import {
   AutoLogLevel,
@@ -76,7 +76,6 @@ const nonLoggedClass = new NonLoggedClass();
 nonLoggedClass.iDontLog();
 nonLoggedClass.iDoLog("arg1");
 
-
 @AutoLog({ logger, level: "debug", enableLogging: false })
 class DisabledLoggedClass {
   iDontLog() {
@@ -87,3 +86,15 @@ class DisabledLoggedClass {
 const disabledLoggedClass = new DisabledLoggedClass();
 
 disabledLoggedClass.iDontLog();
+
+@AutoLog({ logger, level: "debug", enableLogging: true })
+@AutoLogBypassClass
+class LoggingDisabledByClass {
+  doILog(argument: string) {
+    return `me please ${argument}`;
+  }
+}
+
+const loggingDisabledByClass = new LoggingDisabledByClass();
+
+loggingDisabledByClass.doILog('NO!');
