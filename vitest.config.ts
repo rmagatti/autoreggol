@@ -7,6 +7,7 @@ export default defineConfig({
     environment: "node",
     threads: false,
     logHeapUsage: true,
+    reporters: "verbose",
     globalSetup: "./test/setup.ts",
     coverage: {
       reporter: ["lcov", "text", "html"],
