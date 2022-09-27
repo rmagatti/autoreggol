@@ -1,5 +1,9 @@
 # Auto Reggol Changelog
  
+## 0.3.0 (September 26, 2022)
+
+- Add a new class decorator `@AutoLogBypassClass` to disable logging for the entire class.
+
 ## 0.2.0 (Aug 05, 2022)
 
 - Added the ability to control wheter the logging proxy gets applied through an `enableLogging` option that defaults to `true`

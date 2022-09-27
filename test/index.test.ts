@@ -1,147 +1,70 @@
-import { getEnv } from '../src';
+import { AutoLog, LogFunction } from "../src";
 
-const setEnv = (appEnv?: string, nodeEnv?: string) => {
-  if (appEnv) {
-    process.env.APP_ENV = appEnv;
-  } else {
-    delete process.env.APP_ENV;
-  }
-
-  if (nodeEnv) {
-    process.env.NODE_ENV = nodeEnv;
-  } else {
-    delete process.env.NODE_ENV;
-  }
-};
-
-beforeAll(() => {
-  delete process.env.APP_ENV;
-  delete process.env.NODE_ENV;
-});
-
-afterAll(() => {
-  delete process.env.APP_ENV;
-  process.env.NODE_ENV = 'test';
-});
-
-describe('env', () => {
-  test('APP_ENV: undefined, NODE_ENV: undefined = development', async () => {
-    setEnv(undefined, undefined);
-
-    const env = getEnv();
-
-    expect(env).toStrictEqual({
-      isTest: false,
-      isDevelopment: true,
-      isIntegration: false,
-      isStaging: false,
-      isProduction: false,
-      isLive: false
-    });
+describe("AutoLog", () => {
+  afterEach(() => {
+    vi.resetAllMocks();
   });
 
-  test('APP_ENV: undefined, NODE_ENV: test = test', async () => {
-    setEnv(undefined, 'test');
+  const logger: LogFunction = vi.fn();
+  const level = "debug";
 
-    const env = getEnv();
+  test("calls the log function when accessing a method", async () => {
+    @AutoLog({ logger, level })
+    class MyClass {
+      public property = "aProperty";
 
-    expect(env).toStrictEqual({
-      isTest: true,
-      isDevelopment: false,
-      isIntegration: false,
-      isStaging: false,
-      isProduction: false,
-      isLive: false
-    });
+      myMethod(myArg: string) {
+        return `my return ${myArg}`;
+      }
+    }
+
+    const myClass = new MyClass();
+
+    myClass.myMethod("anArg");
+
+    expect(logger).toHaveBeenCalledWith(
+      expect.anything(), // Comparing `MyClass` with `MyClass` here doesn' really work since `@AutoLog` wraps the class in a proxy?
+      "myMethod",
+      ["anArg"],
+      "debug"
+    );
   });
 
-  test('APP_ENV: development, NODE_ENV: undefined = development', async () => {
-    setEnv('development', undefined);
+  test("calls the log function when accessing a property", async () => {
+    @AutoLog({ logger, level, enablePropertyLoging: true })
+    class MyPropertyLoggingClass {
+      public property = "aProperty";
 
-    const env = getEnv();
+      myMethod(myArg: string) {
+        return `my return ${myArg}`;
+      }
+    }
 
-    expect(env).toStrictEqual({
-      isTest: false,
-      isDevelopment: true,
-      isIntegration: false,
-      isStaging: false,
-      isProduction: false,
-      isLive: false
-    });
+    const myPropertyLoggingClass = new MyPropertyLoggingClass();
+    myPropertyLoggingClass.property;
+
+    expect(logger).toHaveBeenCalledWith(
+      expect.anything(), // Comparing `MyClass` with `MyClass` here doesn' really work since `@AutoLog` wraps the class in a proxy?
+      "property",
+      "aProperty",
+      "debug"
+    );
   });
 
-  test('APP_ENV: development, NODE_ENV: production = development', async () => {
-    setEnv('development', 'production');
+  test("does not call the log function when enableLogging is false", async () => {
+    @AutoLog({ logger, level, enableLogging: false })
+    class MyClass {
+      public property = "aProperty";
 
-    const env = getEnv();
+      myMethod(myArg: string) {
+        return `my return ${myArg}`;
+      }
+    }
 
-    expect(env).toStrictEqual({
-      isTest: false,
-      isDevelopment: true,
-      isIntegration: false,
-      isStaging: false,
-      isProduction: false,
-      isLive: false
-    });
-  });
+    const myClass = new MyClass();
 
-  test('APP_ENV: development, NODE_ENV: test = test', async () => {
-    setEnv('development', 'test');
+    myClass.myMethod("anArg");
 
-    const env = getEnv();
-
-    expect(env).toStrictEqual({
-      isTest: true,
-      isDevelopment: false,
-      isIntegration: false,
-      isStaging: false,
-      isProduction: false,
-      isLive: false
-    });
-  });
-
-  test('APP_ENV: production, NODE_ENV: test = test', async () => {
-    setEnv('production', 'test');
-
-    const env = getEnv();
-
-    expect(env).toStrictEqual({
-      isTest: true,
-      isDevelopment: false,
-      isIntegration: false,
-      isStaging: false,
-      isProduction: false,
-      isLive: false
-    });
-  });
-
-  test('APP_ENV: production, NODE_ENV: production = production', async () => {
-    setEnv('production', 'production');
-
-    const env = getEnv();
-
-    expect(env).toStrictEqual({
-      isTest: false,
-      isDevelopment: false,
-      isIntegration: false,
-      isStaging: false,
-      isProduction: true,
-      isLive: true
-    });
-  });
-
-  test('APP_ENV: staging, NODE_ENV: production = staging', async () => {
-    setEnv('staging', 'production');
-
-    const env = getEnv();
-
-    expect(env).toStrictEqual({
-      isTest: false,
-      isDevelopment: false,
-      isIntegration: false,
-      isStaging: true,
-      isProduction: false,
-      isLive: true
-    });
+    expect(logger).not.toHaveBeenCalled();
   });
 });
