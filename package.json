@@ -31,7 +31,9 @@
     "watch": "tsc --watch",
     "test": "NODE_ENV=test",
     "clean": "rimraf build",
-    "prepublishOnly": "rimraf build && tsc"
+    "prepublishOnly": "rimraf build && tsc",
+    "test": "NODE_ENV=test vitest",
+    "coverage": "NODE_ENV=test vitest run --coverage"
   },
   "publishConfig": {
     "access": "public"
@@ -44,6 +46,7 @@
   },
   "devDependencies": {
     "ts-node-dev": "^1.1.1",
-    "typescript": "^4.2.2"
+    "typescript": "^4.2.2",
+    "vitest": "^0.23.4"
   }
 }
