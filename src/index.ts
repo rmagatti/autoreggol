@@ -18,6 +18,8 @@ function AutoLog({
 
           return new Proxy(Reflect.construct(clz, args), {
             get(target: any, propKey: any, receiver: any) {
+
+
               const targetValue = Reflect.get(target, propKey, receiver);
               const bypassLogging = Reflect.getMetadata(
                 MetadataKey.BYPASS_LOGGING,
@@ -31,6 +33,7 @@ function AutoLog({
               ) as Level | undefined;
 
               const LEVEL = logLevel ?? level;
+
 
               if (typeof targetValue === "function" && !bypassLogging) {
 
@@ -47,6 +50,7 @@ function AutoLog({
                   return targetValue.apply(receiver, args);
                 };
               } else {
+
                 if (enablePropertyLoging && !bypassLogging) {
                   logger(constructor, propKey, targetValue, LEVEL);
                 }

@@ -1,4 +1,4 @@
-import { defaults as tsjPreset } from 'ts-jest/presets'
+import { defaults as tsjPreset } from 'ts-jest/presets';
 
 const config = {
   verbose: true,
