@@ -1,4 +1,4 @@
-import { AutoLog, AutoLogBypassClass, LogFunction } from "../src";
+import { AutoLog, AutoLogBypassClass, LogFunction } from "../../src";
 
 describe("Class Decorators", () => {
   afterEach(() => {

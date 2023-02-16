@@ -4,7 +4,7 @@ import {
   AutoLogLevel,
   AutoLogMe,
   LogFunction,
-} from "../src";
+} from "../../src";
 
 describe("Method Decorators", () => {
   afterEach(() => {

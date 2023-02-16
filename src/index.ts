@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "reflect-metadata";
 import { MetadataKey, AutoLogOptions, ConstructorType, Level } from "./base";
 
@@ -14,6 +15,7 @@ function AutoLog({
     if (!shouldBypass) {
       const proxy = new Proxy(constructor, {
         construct(clz, args) {
+
           return new Proxy(Reflect.construct(clz, args), {
             get(target: any, propKey: any, receiver: any) {
               const targetValue = Reflect.get(target, propKey, receiver);
@@ -31,6 +33,14 @@ function AutoLog({
               const LEVEL = logLevel ?? level;
 
               if (typeof targetValue === "function" && !bypassLogging) {
+
+                /** :facepalm: This is awful.
+                * The reason this is needed is because _something_ in jest-mock _really_ doesn't like it when a wrapper on the function is returned. With Vitest's `spyOn` this doesn't seem to be a problem.
+                */
+                if (targetValue._isMockFunction) {
+                  return targetValue;
+                }
+
                 return function _function(...args: any): typeof target {
                   logger(constructor, propKey, args, LEVEL);
 

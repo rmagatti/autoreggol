@@ -24,14 +24,16 @@
     "url": "git@github.com:rmagatti/autoreggol.git"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=18.0.0"
   },
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
     "clean": "rimraf build",
     "prepublishOnly": "rimraf build && tsc",
-    "test": "NODE_ENV=test vitest",
+    "test": "NODE_ENV=test vitest run && jest",
+    "test-vitest": "NODE_ENV=test vitest run",
+    "test-jest": "NODE_ENV=test jest",
     "coverage": "NODE_ENV=test vitest run --coverage"
   },
   "publishConfig": {
@@ -44,8 +46,15 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "eslint": "^8.34.0",
+    "jest": "^29.4.3",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^1.1.1",
-    "typescript": "^4.2.2",
-    "vitest": "^0.23.4"
+    "typescript": "^4.9.5",
+    "vitest": "^0.28.5"
   }
 }
