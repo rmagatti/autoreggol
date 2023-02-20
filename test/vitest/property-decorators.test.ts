@@ -3,7 +3,7 @@ import {
   AutoLogPropBypass,
   AutoLogPropLevel,
   LogFunction,
-} from "../src";
+} from "../../src";
 
 describe("Property Decorators", () => {
   afterEach(() => {

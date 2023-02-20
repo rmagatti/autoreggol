@@ -1,4 +1,4 @@
-import { AutoLog, LogFunction } from "../src";
+import { AutoLog, LogFunction } from "../../src";
 
 describe("AutoLog", () => {
   afterEach(() => {
@@ -66,5 +66,25 @@ describe("AutoLog", () => {
     myClass.myMethod("anArg");
 
     expect(logger).not.toHaveBeenCalled();
+  });
+
+  test("does not call the log function when enableLogging is false", async () => {
+    @AutoLog({ logger, level })
+    class MyClass {
+      public property = "aProperty";
+
+      myMethod(myArg: string) {
+        return `my return ${myArg}`;
+      }
+    }
+
+    const myClass = new MyClass();
+
+    const mySpy = vi.spyOn(myClass, "myMethod").mockReturnValue("aReturnValue");
+
+    const ret = myClass.myMethod("anArg");
+
+    expect(ret).toBe("aReturnValue");
+    expect(mySpy).toHaveBeenCalledWith("anArg");
   });
 });
