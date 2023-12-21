@@ -31,7 +31,7 @@ describe("AutoLog", () => {
   });
 
   test("calls the log function when accessing a property", async () => {
-    @AutoLog({ logger, level, enablePropertyLoging: true })
+    @AutoLog({ logger, level, enablePropertyLogging: true })
     class MyPropertyLoggingClass {
       public property = "aProperty";
 

@@ -14,7 +14,7 @@ const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
   console.log(`${level}: ${ctr.name}.${targetKey.toString()}`, targetValue);
 };
 
-@AutoLog({ logger, level: "debug", enablePropertyLoging: true })
+@AutoLog({ logger, level: "debug", enablePropertyLogging: true })
 class Example {
   private a = "foo";
   private b = "bar";
