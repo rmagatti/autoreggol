@@ -10,7 +10,7 @@ export const enum MetadataKey {
 export interface AutoLogOptions {
   logger: LogFunction;
   level?: Level;
-  enablePropertyLoging?: boolean;
+  enablePropertyLogging?: boolean;
   enableLogging?: boolean;
 }
 

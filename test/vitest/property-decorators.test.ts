@@ -35,7 +35,7 @@ describe("Property Decorators", () => {
 
   describe("@AutoLogPropLevel", () => {
     test("changes the log level of a tagged property to a particular level when calling the logger function", async () => {
-      @AutoLog({ logger, level, enablePropertyLoging: true })
+      @AutoLog({ logger, level, enablePropertyLogging: true })
       class MyClass {
         @AutoLogPropLevel("info")
         public property = "aProperty";

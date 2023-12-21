@@ -15,7 +15,7 @@ const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
 Pass the logger function into the `@AutoLog` decorator.
 
 ```typescript
-@AutoLog({ logger, level: "debug", enablePropertyLoging: true })
+@AutoLog({ logger, level: "debug", enablePropertyLogging: true })
 class Example {}
 ```
 
@@ -34,7 +34,7 @@ const logger: LogFunction = (ctr, targetKey, targetValue, level) => {
   console.log(`${level}: ${ctr.name}.${targetKey.toString()}`, targetValue);
 };
 
-@AutoLog({ logger, level: "debug", enablePropertyLoging: true })
+@AutoLog({ logger, level: "debug", enablePropertyLogging: true })
 class Example {
   private a = "foo";
   private b = "bar";

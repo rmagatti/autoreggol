@@ -5,7 +5,7 @@ import { MetadataKey, AutoLogOptions, ConstructorType, Level } from "./base";
 function AutoLog({
   logger,
   level = "info",
-  enablePropertyLoging = false,
+  enablePropertyLogging = false,
   enableLogging = true,
 }: AutoLogOptions) {
   return function _autolog<T extends ConstructorType>(constructor: T) {
@@ -51,7 +51,7 @@ function AutoLog({
                 };
               } else {
 
-                if (enablePropertyLoging && !bypassLogging) {
+                if (enablePropertyLogging && !bypassLogging) {
                   logger(constructor, propKey, targetValue, LEVEL);
                 }
 

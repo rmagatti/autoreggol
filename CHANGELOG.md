@@ -1,5 +1,8 @@
 # Auto Reggol Changelog
- 
+
+# 0.4.0 (December 21, 2023)
+- Renamed `enablePropertyLoging` to `enablePropertyLogging`.
+
 ## 0.3.0 (September 26, 2022)
 
 - Add a new class decorator `@AutoLogBypassClass` to disable logging for the entire class.
